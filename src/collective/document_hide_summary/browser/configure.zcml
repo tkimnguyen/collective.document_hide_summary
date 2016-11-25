@@ -1,0 +1,31 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.document_hide_summary">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="collective.document_hide_summary.interfaces.ICollectiveDocumentViewNoDescriptionLayer"
+      />
+
+  <!-- Publish static files -->
+  <plone:static
+      name="collective.document_hide_summary"
+      type="plone"
+      directory="static"
+      />
+
+  <browser:page
+    name="document_hide_description"
+    menu="plone_displayviews"
+    title="Hide Summary"
+    layer="..interfaces.ICollectiveDocumentViewNoDescriptionLayer"
+    for="plone.app.contenttypes.interfaces.IDocument"
+    template="templates/document_hide_description.pt"
+    permission="zope2.View"
+    />
+
+</configure>

@@ -1,0 +1,37 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.document_hide_summary">
+
+  <i18n:registerTranslations directory="locales" />
+
+  <includeDependencies package="." />
+
+  <include package=".browser" />
+
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.document_hide_summary"
+      directory="profiles/default"
+      description="Installs the collective.document_hide_summary add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.document_hide_summary (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the collective.document_hide_summary add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.document_hide_summary-hiddenprofiles" />
+
+</configure>
