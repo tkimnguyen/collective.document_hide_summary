@@ -14,12 +14,24 @@ Features
 - uninstalls cleanly
 
 
-
 Documentation
 -------------
 
 After you activate this add-on, every page ("Document" content type)
 on your site will have a new Display menu choice "Hide Summary".
+
+Beware: deactivating and/or removing this add-on will result in errors
+on pages (Documents) that you set to use the "Hide Summary" view. To
+fix those pages, you must invoke selectViewTemplate on each page and
+specify the default document_view, e.g.
+
+http://localhost:8080/Plone/my-page/selectViewTemplate?templateId=document_view
+
+Alternatively, you can use the Management Interface on each such page, e.g.
+
+http://localhost:8080/Plone/my-page/manage_propertiesForm
+
+and delete the property named "Layout".
 
 
 Translations
